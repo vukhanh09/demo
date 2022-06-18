@@ -100,11 +100,9 @@ function CreateETLjob() {
     }
 
 
-
-  
     return (
-      <div className={styles.main}>
-        <div  className={styles.info}>
+      <div >
+        <div  >
           <Box
             // className={styles.box}
             component="form"
@@ -152,8 +150,14 @@ function CreateETLjob() {
         </Box>
 
         </div>
-        <div className={styles.content}>
-            <form onSubmit={submit}>
+        <div >
+            <Box onSubmit={submit} 
+              sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              >
               {formSrcFields.map((form, index) => {
                   return (
                   <div key={index}>
@@ -171,21 +175,24 @@ function CreateETLjob() {
                       </select>
                       
                       
-                      <input
+                      <TextField
                       name='connectstring'
-                      placeholder='storage path/tên database'
+                      size="small"
+                      label='storage path/tên database'
                       onChange={event => handleFormSrcChange(event, index)}
                       value={form.connectstring}
                       />
-                      <input
+                      <TextField
                       name='tablename'
-                      placeholder='Tên bảng/tên file'
+                      size="small"
+                      label='Tên bảng/tên file'
                       onChange={event => handleFormSrcChange(event, index)}
                       value={form.tablename}
                       />
-                      <input
+                      <TextField
                       name='alias'
-                      placeholder='Tên bảng tạm'
+                      size="small"
+                      label='Tên bảng tạm'
                       onChange={event => handleFormSrcChange(event, index)}
                       value={form.alias}
                       />
@@ -194,8 +201,8 @@ function CreateETLjob() {
                   )
               })}
                       <button onClick={addFields}>Thêm Nguồn..</button>
-            </form>
-            <div  className={styles.elm2}>
+            </Box>
+            <div  >
               {/* <input placeholder='Số query' onChange={e => addFieldQuery(e.target.value)}/> */}
               {formSrcQuery.map((form, index) =>(
                 <Box key={index}
