@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import styles from './createJob.module.css'
+import MultipleSelectCheckmarks from './MultipleSelectCheckmarks';
 
 function CreateETLjob() {
     const [formSrcFields, setFormSrcFields] = useState([
@@ -30,7 +31,6 @@ function CreateETLjob() {
         targettable:  ''
       },
     ])
-    console.log(formSrcQuery)
 
 
   
@@ -41,6 +41,7 @@ function CreateETLjob() {
     }
     const handleFormSrcQuery = (event, index) => {
       let data = [...formSrcQuery] ;
+      console.log(event.target.id)
       data[index][event.target.id] = event.target.value;
       setFormSrcQuery(data);
     }
@@ -267,6 +268,7 @@ function CreateETLjob() {
         </div>
         <br />
         <button onClick={submit}>Tạo tiến trình</button>
+        <MultipleSelectCheckmarks/>
       </div>
     );
   }
